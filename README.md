@@ -28,7 +28,7 @@ usage.
 
 ### Example ###
 
-An simple program using `Wind`'s fast buffered `each_line` method.
+An simple program using `Wind`'s fast, buffered `each_line` method.
 
 ```ruby
 require "wind"
