@@ -17,5 +17,6 @@
 # along with Wind.  If not, see <http://www.gnu.org/licenses/>.
 
 module Wind
+  # RubyGems version number
   VERSION = "0.1.0"
 end

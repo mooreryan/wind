@@ -17,7 +17,7 @@
 # along with Wind.  If not, see <http://www.gnu.org/licenses/>.
 
 require "wind/version"
+require "wind/io"
 
 module Wind
-  # Your code goes here...
 end

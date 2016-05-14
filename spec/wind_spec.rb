@@ -22,4 +22,37 @@ describe Wind do
   it 'has a version number' do
     expect(Wind::VERSION).not_to be nil
   end
+
+  let(:fname) { File.join Dir.pwd, "tmp.txt" }
+
+  describe IO do
+    it 'has a non negative BUFFER SIZE' do
+      expect(Wind::IO::BUFFER_SIZE).to be > 0
+    end
+
+    describe "#each_line" do
+      after(:each) do
+        FileUtils.rm fname
+      end
+
+      it "yields the same lines as std Ruby each_line" do
+        write_random_file fname
+
+        lines = []
+        File.open(fname, "rt").each_line { |l| lines << l }
+
+        expect{|b| SFile.open(fname, "rt").each_line(&b)}.
+          to yield_successive_args *lines
+      end
+
+      it "returns an enumerator when no block is given" do
+        write_random_file fname
+
+        lines = []
+        enum = File.open(fname, "rt").each_line
+
+        expect(SFile.open(fname, "rt").each_line.to_a).to eq enum.to_a
+      end
+    end
+  end
 end

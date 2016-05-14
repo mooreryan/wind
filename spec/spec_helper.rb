@@ -19,5 +19,22 @@
 require "coveralls"
 Coveralls.wear!
 
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'wind'
+$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
+require "wind"
+require "fileutils"
+
+class SFile < File
+  include Wind::IO
+end
+
+def random_size_line
+  "a" * rand(0..10_000)
+end
+
+def write_random_file fname
+  File.open(fname, "w") do |f|
+    rand(10..20).times do
+      f.puts random_size_line
+    end
+  end
+end

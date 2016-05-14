@@ -1,11 +1,16 @@
 # Wind #
 
+[![Gem Version](https://badge.fury.io/rb/wind.svg)](https://badge.fury.io/rb/wind) [![Build Status](https://travis-ci.org/mooreryan/wind.svg?branch=master)](https://travis-ci.org/mooreryan/wind) [![Coverage Status](https://coveralls.io/repos/github/mooreryan/wind/badge.svg?branch=master)](https://coveralls.io/github/mooreryan/wind?branch=master)
+
+A collection of Ruby core extensions including a fast, buffered
+version of `IO#each_line`.
+
 ## Installation ##
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'wind'
+gem "wind"
 ```
 
 And then execute:
@@ -15,6 +20,22 @@ And then execute:
 Or install it yourself as:
 
     $ gem install wind
+
+## Usage ##
+
+See [documentation](http://www.rubydoc.info/gems/wind) for complete
+usage.
+
+### Example ###
+
+An simple program using `Wind`'s fast buffered `each_line` method.
+
+```ruby
+require "wind"
+
+File.include Wind::IO
+File.open(ARGV.first, "rt").each_line { |line| puts }
+```
 
 ## Development ##
 
